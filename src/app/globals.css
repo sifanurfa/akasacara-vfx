@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,434 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+@import "tailwindcss";
+
+:root {
+  --vfx-bg: #0D0D0D;
+  --akasacara-bg: #FDFDFD;
+  --interactive-bg: #121212;
+  --Hyperlink-txt: #000;
+
+  --fontweight-headline-1: 800;
+  --fontweight-headline-2: 600;
+  --fontweight-headline-3: 600;
+  --fontweight-headline-3-bold: 700;
+  --fontweight-subheading-reg: 400;
+  --fontweight-subheading-light: 300;
+  --fontweight-body-reg: 400;
+  --fontweight-body-light: 300;
+  --fontweight-button-main: 600;
+  --fontweight-button-secondary: 500;
+  --fontweight-filter: 500;
+  --fontweight-title: 800;
+  --fontweight-caption: 400;
+  
+  --fontstyle-headline-1: normal;
+  --fontstyle-headline-2: normal;
+  --fontstyle-headline-3: normal;
+  --fontstyle-headline-3-bold: normal;
+  --fontstyle-subheading-reg: normal;
+  --fontstyle-subheading-light: normal;
+  --fontstyle-body-reg: normal;
+  --fontstyle-body-light: normal;
+  --fontstyle-button-main: italic;
+  --fontstyle-button-secondary: italic;
+  --fontstyle-act-filter: italic;
+  --fontstyle-non-act-filter: normal;
+  --fontstyle-title: normal;
+  --fontstyle-caption: normal;
+
+  /* -------------------- Max -------------------- */
+  --breakpoint: 1920px;
+  --columns: 12px;
+  --margin: 116px;
+  --gutter: 52px;
+  --minwidth: 1441px;
+  --card-pictporto: 950px;
+  --card-pictlist: 763px;
+  --card-actposter-VFX: 489px;
+  --card-poster-VFX: 432px;
+  --card-showreel-interact: 1544px;
+  --card-announc-interact: 785px;
+  --card-platformlogo: 200px;
+  --card-side-highlight: 760px;
+  --card-highlight: 1015px;
+  --container-spacing-containerpadding: 116px;
+  --container-spacing-sectionspacing: 120px;
+  --container-spacing-xs: 4px;
+  --container-spacing-s: 12px;
+  --container-spacing-m: 20px;
+  --container-spacing-md: 30px;
+  --container-spacing-l: 40px;
+  --container-spacing-xl: 56px;
+  --container-spacing-2xl: 64px;
+  --container-spacing-3xl: 84px;
+  --container-spacing-4xl: 96px;
+  --text-title: 96px;
+  --text-headline-1: 68px;
+  --text-headline-2: 56px;
+  --text-headline-3: 48px;
+  --text-subheading: 36px;
+  --text-body: 28px;
+  --text-caption: 20px;
+  --text-button-main: 36px;
+  --text-button-sec: 28px;
+  --text-filter: 36px;
+  --text-navigation: 16px;
+  --text-lineheight-title: 116px;
+  --text-lineheight-headline-1: 80px;
+  --text-lineheight-headline-2: 68px;
+  --text-lineheight-headline-3: 60px;
+  --text-lineheight-subheading: 48px;
+  --text-lineheight-body: 36px;
+  --text-lineheight-caption: 28px;
+  --text-lineheight-button-main: 44px;
+  --text-lineheight-button-sec: 36px;
+  --text-lineheight-filter: 44px;
+}
+
+/* -------------------- Desktop -------------------- */
+@media (max-width: 1440px) {
+  :root {
+    --breakpoint: 1440px;
+    --columns: 12px;
+    --margin: 96px;
+    --gutter: 32px;
+    --minwidth: 769px;
+    --card-pictporto: 700px;
+    --card-pictlist: 580px;
+    --card-actposter-VFX: 351px;
+    --card-poster-VFX: 310px;
+    --card-showreel-interact: 1165px;
+    --card-announc-interact: 625px;
+    --card-platformlogo: 145px;
+    --card-side-highlight: 570px;
+    --card-highlight: 761px;
+    --container-spacing-containerpadding: 96px;
+    --container-spacing-sectionspacing: 100px;
+    --container-spacing-xs: 4px;
+    --container-spacing-s: 8px;
+    --container-spacing-m: 16px;
+    --container-spacing-md: 24px;
+    --container-spacing-l: 32px;
+    --container-spacing-xl: 48px;
+    --container-spacing-2xl: 56px;
+    --container-spacing-3xl: 72px;
+    --container-spacing-4xl: 80px;
+    --text-title: 72px;
+    --text-headline-1: 52px;
+    --text-headline-2: 44px;
+    --text-headline-3: 36px;
+    --text-subheading: 28px;
+    --text-body: 20px;
+    --text-caption: 16px;
+    --text-button-main: 28px;
+    --text-button-sec: 20px;
+    --text-filter: 28px;
+    --text-navigation: 12px;
+    --text-lineheight-title: 92px;
+    --text-lineheight-headline-1: 64px;
+    --text-lineheight-headline-2: 56px;
+    --text-lineheight-headline-3: 44px;
+    --text-lineheight-subheading: 36px;
+    --text-lineheight-body: 28px;
+    --text-lineheight-caption: 24px;
+    --text-lineheight-button-main: 36px;
+    --text-lineheight-button-sec: 28px;
+    --text-lineheight-filter: 36px;
+  }
+}
+
+/* -------------------- Tablet -------------------- */
+@media (max-width: 768px) {
+  :root {
+    --breakpoint: 768px;
+    --columns: 8px;
+    --margin: 24px;
+    --gutter: 24px;
+    --minwidth: 391px;
+    --card-pictporto: 382px;
+    --card-pictlist: 360px;
+    --card-actposter-VFX: 231px;
+    --card-poster-VFX: 180px;
+    --card-showreel-interact: 628px;
+    --card-announc-interact: 365px;
+    --card-platformlogo: 80px;
+    --card-side-highlight: 220px;
+    --card-highlight: 220px;
+    --container-spacing-containerpadding: 24px;
+    --container-spacing-sectionspacing: 72px;
+    --container-spacing-s: 4px;
+    --container-spacing-xs: 4px;
+    --container-spacing-m: 12px;
+    --container-spacing-md: 16px;
+    --container-spacing-l: 16px;
+    --container-spacing-xl: 36px;
+    --container-spacing-2xl: 40px;
+    --container-spacing-3xl: 56px;
+    --container-spacing-4xl: 64px;
+    --text-title: 40px;
+    --text-headline-1: 28px;
+    --text-headline-2: 24px;
+    --text-headline-3: 20px;
+    --text-subheading: 16px;
+    --text-body: 12px;
+    --text-caption: 8px;
+    --text-button-main: 16px;
+    --text-button-sec: 12px;
+    --text-filter: 16px;
+    --text-navigation: 8px;
+    --text-lineheight-title: 60px;
+    --text-lineheight-headline-1: 36px;
+    --text-lineheight-headline-2: 32px;
+    --text-lineheight-headline-3: 28px;
+    --text-lineheight-subheading: 24px;
+    --text-lineheight-body: 20px;
+    --text-lineheight-caption: 16px;
+    --text-lineheight-button-main: 24px;
+    --text-lineheight-button-sec: 20px;
+    --text-lineheight-filter: 24px;
+  }
+}
+
+/* -------------------- Mobile -------------------- */
+@media (max-width: 390px) {
+  :root {
+    --breakpoint: 390px;
+    --columns: 4px;
+    --margin: 16px;
+    --gutter: 16px;
+    --minwidth: 101px;
+    --card-pictporto: 194px;
+    --card-pictlist: 194px;
+    --card-actposter-VFX: 120px;
+    --card-poster-VFX: 80px;
+    --card-showreel-interact: 122px;
+    --card-announc-interact: 165px;
+    --card-platformlogo: 40px;
+    --card-side-highlight: 150px;
+    --card-highlight: 150px;
+    --container-spacing-containerpadding: 16px;
+    --container-spacing-sectionspacing: 48px;
+    --container-spacing-s: 4px;
+    --container-spacing-xs: 4px;
+    --container-spacing-m: 8px;
+    --container-spacing-md: 8px;
+    --container-spacing-l: 8px;
+    --container-spacing-xl: 20px;
+    --container-spacing-2xl: 24px;
+    --container-spacing-3xl: 36px;
+    --container-spacing-4xl: 40px;
+    --text-title: 20px;
+    --text-headline-1: 16px;
+    --text-headline-2: 12px;
+    --text-headline-3: 10px;
+    --text-subheading: 8px;
+    --text-body: 6px;
+    --text-caption: 4px;
+    --text-button-main: 8px;
+    --text-button-sec: 6px;
+    --text-filter: 8px;
+    --text-navigation: 8px;
+    --text-lineheight-title: 28px;
+    --text-lineheight-headline-1: 24px;
+    --text-lineheight-headline-2: 20px;
+    --text-lineheight-headline-3: 16px;
+    --text-lineheight-subheading: 14px;
+    --text-lineheight-body: 12px;
+    --text-lineheight-caption: 10px;
+    --text-lineheight-button-main: 14px;
+    --text-lineheight-button-sec: 12px;
+    --text-lineheight-filter: 14px;
+  }
+}
+
+@theme inline {
+  --color-akasacara: var(--akasacara-bg);
+  --color-vfx: var(--vfx-bg);
+  --color-interactive: var(--interactive-bg);
+
+  --spacing-breakpoint: var(--breakpoint);
+  --spacing-container: var(--container-spacing-containerpadding);
+  --spacing-section: var(--container-spacing-sectionspacing);
+  --spacing-xs: var(--container-spacing-xs);
+  --spacing-s: var(--container-spacing-s);
+  --spacing-m: var(--container-spacing-m);
+  --spacing-md: var(--container-spacing-md);
+  --spacing-l: var(--container-spacing-l);
+  --spacing-xl: var(--container-spacing-xl);
+  --spacing-2xl: var(--container-spacing-2xl);
+  --spacing-3xl: var(--container-spacing-3xl);
+  --spacing-4xl: var(--container-spacing-4xl);
+
+  --spacing-pictporto: var(--card-pictporto);
+  --spacing-pictlist: var(--card-pictlist);
+  --spacing-actposter: var(--card-actposter);
+  --spacing-poster: var(--card-poster);
+  --spacing-showreel: var(--card-showreel);
+  --spacing-announc: var(--card-announc);
+  --spacing-platformlogo: var(--card-platformlogo);
+  --spacing-side-highlight: var(--card-side-highlight);
+  --spacing-highlight: var(--card-highlight);
+}
+
+/* -------------------- Text styles -------------------- */
+.body-reg {
+  font-family: var(--font-rubik);
+  font-size: var(--text-body);
+  font-style: var(--fontstyle-body-reg);
+  font-weight: var(--fontweight-body-reg);
+  line-height: var(--text-lineheight-body);
+}
+.body-light {
+  font-family: var(--font-rubik);
+  font-size: var(--text-body);
+  font-style: var(--fontstyle-body-light);
+  font-weight: var(--fontweight-body-light);
+  line-height: var(--text-lineheight-body);
+  letter-spacing: -0.056px;
+}
+.caption-reg {
+  font-family: var(--font-rubik);
+  font-size: var(--text-caption);
+  font-style: var(--fontstyle-caption);
+  font-weight: var(--fontweight-caption);
+  line-height: var(--text-lineheight-caption);
+}
+.button-main {
+  font-family: var(--font-rubik);
+  font-size: var(--text-button-main);
+  font-style: var(--fontstyle-button-main);
+  font-weight: var(--fontweight-button-main);
+  line-height: var(--ltext-lineheight-button-main);
+}
+.button-secondary {
+  font-family: var(--font-rubik);
+  font-size: var(--text-button-sec);
+  font-style: var(--fontstyle-button-secondary);
+  font-weight: var(--button-secondary-font-weight);
+  line-height: var(--text-lineheight-button-sec);
+}
+.headline-1 {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: var(--text-headline-1);
+  font-style: var(--fontstyle-headline-1);
+  font-weight: var(--fontweight-headline-1);
+  line-height: var(--text-lineheight-headline-1);
+}
+.headline-2 {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: var(--text-headline-2);
+  font-style: var(--fontstyle-headline-2);
+  font-weight: var(--fontweight-headline-2);
+  line-height: var(--text-lineheight-headline-2);
+}
+.headline-3 {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: var(--text-headline-3);
+  font-style: var(--fontstyle-headline-3);
+  font-weight: var(--fontweight-headline-3);
+  line-height: var(--text-lineheight-headline-3);
+}
+.headline-3-bold {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: var(--text-headline-3);
+  font-style: var(--fontstyle-headline-3-bold);
+  font-weight: var(--fontweight-headline-3-bold);
+  line-height: var(--text-lineheight-headline-3);
+}
+.sub-heading-reg {
+  font-family: var(--font-rubik);
+  font-size: var(--text-subheading);
+  font-style: var(--fontstyle-subheading-reg);
+  font-weight: var(--fontweight-subheading-reg);
+  line-height: var(--text-lineheight-subheading);
+}
+.sub-heading-light {
+  font-family: var(--font-rubik);
+  font-size: var(--text-subheading);
+  font-style: var(--fontstyle-subheading-light);
+  font-weight: var(--fontweight-subheading-light);
+  line-height: var(--text-lineheight-subheading);
+}
+.active-filter {
+  font-family: var(--font-rubik);
+  font-size: var(--text-filter);
+  font-style: var(--fontstyle-act-filter);
+  font-weight: var(--fontweight-filter);
+  line-height: var(--text-lineheight-filter);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+.non-act-filter {
+  font-family: var(--font-rubik);
+  font-size: var(--text-filter);
+  font-style: var(--fontstyle-non-act-filter);
+  font-weight: var(--fontweight-filter);
+  line-height: var(--text-lineheight-filter);
+}
+.title {
+  font-family: var(--font-plus-jakarta-sans);
+  font-size: var(--text-title);
+  font-style: var(--fontstyle-title);
+  font-weight: var(--fontweight-title);
+  line-height: var(--text-lineheight-title);
+}
+.heading-article-card {
+  font-family: var(--font-rubik);
+  font-size: var(--text-body);
+  font-style: normal;
+  font-weight: "500";
+  line-height: var(--text-lineheight-body);
+}
+
+/* -------------------- Colors -------------------- */
+.aka-text-subtitle-1 {
+  color: #000; 
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #000;
+  background-clip: text;  
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.aka-text-subtitle-2 {
+  color: #000; 
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.30) 100%), #000;
+  background-clip: text;  
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.aka-text-title {
+  color: #000;
+}
+.vfx-text-subtitle-1 {
+  color: #CCC;
+}
+.vfx-text-subtitle-2 {
+  color: #B3B3B3;
+}
+.vfx-text-title {
+  color: #FFF;
+}
+.hyperlink-txt {
+  color: #000;
+}
+.non-act-hyperlink {
+  color: #000; 
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #000;
+  background-clip: text;  
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.kategoriourwork {
+  @apply hover:italic hover:underline font-semibold;
 }
