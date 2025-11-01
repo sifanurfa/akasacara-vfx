@@ -298,14 +298,14 @@ body {
 
 /* -------------------- Text styles -------------------- */
 .body-reg {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-body);
   font-style: var(--fontstyle-body-reg);
   font-weight: var(--fontweight-body-reg);
   line-height: var(--text-lineheight-body);
 }
 .body-light {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-body);
   font-style: var(--fontstyle-body-light);
   font-weight: var(--fontweight-body-light);
@@ -313,70 +313,70 @@ body {
   letter-spacing: -0.056px;
 }
 .caption-reg {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-caption);
   font-style: var(--fontstyle-caption);
   font-weight: var(--fontweight-caption);
   line-height: var(--text-lineheight-caption);
 }
 .button-main {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-button-main);
   font-style: var(--fontstyle-button-main);
   font-weight: var(--fontweight-button-main);
   line-height: var(--ltext-lineheight-button-main);
 }
 .button-secondary {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-button-sec);
   font-style: var(--fontstyle-button-secondary);
   font-weight: var(--button-secondary-font-weight);
   line-height: var(--text-lineheight-button-sec);
 }
 .headline-1 {
-  font-family: var(--font-plus-jakarta-sans);
+  font-family: var(--font-playfair-display);
   font-size: var(--text-headline-1);
   font-style: var(--fontstyle-headline-1);
   font-weight: var(--fontweight-headline-1);
   line-height: var(--text-lineheight-headline-1);
 }
 .headline-2 {
-  font-family: var(--font-plus-jakarta-sans);
+  font-family: var(--font-playfair-display);
   font-size: var(--text-headline-2);
   font-style: var(--fontstyle-headline-2);
   font-weight: var(--fontweight-headline-2);
   line-height: var(--text-lineheight-headline-2);
 }
 .headline-3 {
-  font-family: var(--font-plus-jakarta-sans);
+  font-family: var(--font-playfair-display);
   font-size: var(--text-headline-3);
   font-style: var(--fontstyle-headline-3);
   font-weight: var(--fontweight-headline-3);
   line-height: var(--text-lineheight-headline-3);
 }
 .headline-3-bold {
-  font-family: var(--font-plus-jakarta-sans);
+  font-family: var(--font-playfair-display);
   font-size: var(--text-headline-3);
   font-style: var(--fontstyle-headline-3-bold);
   font-weight: var(--fontweight-headline-3-bold);
   line-height: var(--text-lineheight-headline-3);
 }
 .sub-heading-reg {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-subheading);
   font-style: var(--fontstyle-subheading-reg);
   font-weight: var(--fontweight-subheading-reg);
   line-height: var(--text-lineheight-subheading);
 }
 .sub-heading-light {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-subheading);
   font-style: var(--fontstyle-subheading-light);
   font-weight: var(--fontweight-subheading-light);
   line-height: var(--text-lineheight-subheading);
 }
 .active-filter {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-filter);
   font-style: var(--fontstyle-act-filter);
   font-weight: var(--fontweight-filter);
@@ -389,25 +389,39 @@ body {
   text-underline-position: from-font;
 }
 .non-act-filter {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-filter);
   font-style: var(--fontstyle-non-act-filter);
   font-weight: var(--fontweight-filter);
   line-height: var(--text-lineheight-filter);
 }
 .title {
-  font-family: var(--font-plus-jakarta-sans);
+  font-family: var(--font-playfair-display);
   font-size: var(--text-title);
   font-style: var(--fontstyle-title);
   font-weight: var(--fontweight-title);
   line-height: var(--text-lineheight-title);
 }
 .heading-article-card {
-  font-family: var(--font-rubik);
+  font-family: var(--font-poppins);
   font-size: var(--text-body);
   font-style: normal;
   font-weight: "500";
   line-height: var(--text-lineheight-body);
+}
+.watch-here {
+  font-family: var(--font-jet-brains-mono);
+  font-size: var(--container-spacing-md);
+  font-style: normal;
+  font-weight: "700";
+  line-height: 120%;
+}
+.see-all {
+  font-family: var(--font-jet-brains-mono);
+  font-size: var(--text-button-main);
+  font-style: normal;
+  font-weight: "800";
+  line-height: var(--text-lineheight-button-main);
 }
 
 /* -------------------- Colors -------------------- */
