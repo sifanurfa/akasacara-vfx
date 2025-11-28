@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import WatchTrailerBtn from "@/components/interactive/collection/WatchTrailerBtn";
 import PlayNowBtn from "@/components/interactive/collection/PlayNowBtn";
 import "./InteractiveCollection.css";
+import { CustomArrowProps } from "react-slick";
 
 const slides = [
   { src: "/assets/game.png", title: "game" },
@@ -23,6 +24,32 @@ const slides = [
 export default function PopularGame() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const NextArrow = ({ onClick }: CustomArrowProps) => {
+    return (
+      <div
+        onClick={onClick}
+        className="absolute -right-10 top-1/2 -translate-y-1/2 z-10 cursor-pointer transition"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="46" viewBox="0 0 25 46" fill="none">
+          <path d="M2 2L22 23L2 44" stroke="white" strokeWidth="4" strokeLinecap="round"/>
+        </svg>
+      </div>
+    );
+  };
+
+  const PrevArrow = ({ onClick }: CustomArrowProps) => {
+    return (
+      <div
+        onClick={onClick}
+        className="absolute -left-10 top-1/2 -translate-y-1/2 z-10 cursor-pointer transition"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="46" viewBox="0 0 25 46" fill="none">
+          <path d="M22.7617 2L2.76172 23L22.7617 44" stroke="white" strokeWidth="4" strokeLinecap="round"/>
+        </svg>
+      </div>
+    );
+  };
+
   const thumbSettings = {
     focusOnSelect: true,
     infinite: true,
@@ -30,7 +57,10 @@ export default function PopularGame() {
     slidesToScroll: 1,
     arrows: true,
     swipeToSlide: true,
-    centerMode: false,
+    centerMode: true,
+    centerPadding: "0px",
+    nextArrow: <NextArrow/>,
+    prevArrow: <PrevArrow/>,
     responsive: [
       {
         breakpoint: 768,
@@ -44,7 +74,7 @@ export default function PopularGame() {
   };
 
   return (
-    <div className="flex flex-col pb-section items-center gap-[-40px] self-stretch">
+    <div className="flex flex-col relative pb-section items-center gap-[-40px] self-stretch">
       <div className="flex relative w-full aspect-video overflow-hidden flex-col items-center gap-2.5 self-stretch">
         <Image
           src={slides[currentIndex].src}

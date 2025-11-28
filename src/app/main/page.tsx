@@ -1,40 +1,18 @@
 "use client";
 
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import ServiceCard from '@/components/film/home/ServiceCard';
 import PressCard from '@/components/film/home/PressCard';
 import WorkCard from '@/components/film/home/WorkCard';
 import Image from 'next/image';
-
-const press = [
-  {
-    id: 1,
-    title: "Setan Alas: Film Horor Karya Kolaboratif Sekolah Vokasi UGM",
-    category: "Press",
-    image: "/assets/setan_alas.png",
-    date: "Oct 25, 2025",
-  },
-  {
-    id: 2,
-    title: " 'Tengkorak': A brilliant Indonesian science-fiction",
-    category: "News",
-    image: "/assets/tengkorak.png",
-    date: "Oct 16, 2025",
-  },
-  {
-    id: 3,
-    title: "Film Horor Darah Nyai Tayang Serempak 21 Agustus 2025",
-    category: "Press",
-    image: "/assets/darah_nyai_3.png",
-    date: "May 13, 2025",
-  },
-];
+import { AnnouncementFilmApi } from "@/lib/api";
+import { AnnouncementFilm } from "@/types/api/types";
 
 const services = [
   {
     category: "Film",
     caption: "Creating movies, encompasing various stages such as",
-    image: "/assets/about.jpg",
+    image: "/assets/tengkorak.png",
     details: [
       "Scriptwriting",
       "Casting",
@@ -46,7 +24,7 @@ const services = [
   {
     category: "Animation",
     caption: "Bringing static images or object to life through movement.",
-    image: "/assets/SetanAlas1After.png",
+    image: "/assets/SerigalaLangitAfter.png",
     details: [
       "Scriptwriting",
       "Voice recording",
@@ -121,6 +99,21 @@ const works = [
 ];
 
 function AkasacaraHome() {
+  const [press, setPress] = useState<AnnouncementFilm[]>([]);
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await AnnouncementFilmApi.getAnnouncement();
+        setPress(data);
+      } catch (err) {
+        console.error("Failed to fetch works:", err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className='flex flex-col items-start bg-akasacara'>
         {/* showreel */}
@@ -158,15 +151,25 @@ function AkasacaraHome() {
 
         {/* announcement */}
         <div className="flex py-section px-container flex-col items-start gap-3xl self-stretch bg-akasacara-yellow">
-          <div className="headline-1 aka-text-title self-stretch">OUR <span className="italic">PRESS</span></div>
+          <div className="flex items-end justify-between self-stretch">
+            <div className="headline-1 aka-text-title self-stretch">OUR <span className="italic">PRESS</span></div>
+            <div className="flex justify-end items-center gap-m aka-text-title">
+              <span className="button-main">SEE ALL</span>
+              <span className="see-all">&gt;</span>
+            </div>
+          </div>
           <div className="grid grid-cols-3 justify-center items-start gap-6 self-stretch">
             {press.map((item) => (
                 <PressCard
                     key={item.id}
                     id={item.id}
                     title={item.title}
-                    category={item.category}
-                    image={item.image}
+                    announceType={item.announceType}
+                    urlMedia={item.urlMedia}
+                    image={`${baseURL?.replace(
+                      "/api",
+                      ""
+                    )}${item.media?.[0]?.url.replace("/api/", "/")}`}
                     date={item.date}
                 />
             ))}
@@ -206,7 +209,7 @@ function AkasacaraHome() {
             <div className="flex items-center self-stretch">
               <div className="flex-1 relative aspect-4/3 overflow-hidden">
                 <Image
-                    src="/assets/about.jpg"
+                    src="/assets/film/about.png"
                     alt="Portfolio Image"
                     fill
                     className="object-cover"

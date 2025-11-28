@@ -48,7 +48,7 @@ function InteractiveCollection() {
             key={item.id}
             id={item.id}
             title={item.title}
-            content={item.description}
+            description={item.description}
             image={`${baseURL?.replace(
               "/api",
               ""
@@ -72,7 +72,12 @@ function InteractiveCollection() {
           </div>
         </div>
         <div className="flex px-section justify-between items-center self-stretch">
-          <div className="flex flex-col justify-center items-center gap-2.5 self-stretch">
+          <a
+            href="https://yourgame.itch.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col justify-center items-center gap-2.5 self-stretch hover:opacity-80 transition"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="102"
@@ -86,7 +91,7 @@ function InteractiveCollection() {
               />
             </svg>
             <div className={styles.available}>Itch.io</div>
-          </div>
+          </a>
           <div className="flex flex-col justify-center items-center gap-2.5 self-stretch">
             <svg
               xmlns="http://www.w3.org/2000/svg"

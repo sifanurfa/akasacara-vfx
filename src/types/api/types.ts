@@ -22,3 +22,14 @@ export interface InteractiveGame {
   trailer?: string | null;
   media: Media[];
 };
+
+export interface AnnouncementFilm {
+  id: number;
+  identifier: string;
+  urlMedia: string;
+  title: string;
+  announceType: string;
+  item: string;
+  date: string;
+  media: Media[];
+};
