@@ -1,40 +1,58 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { InteractiveGameApi } from "@/lib/api";
+import { InteractiveGame } from "@/types/api/types";
 
-type Portofolio = {
-  id: number;
-  title: string;
-  desc: string;
-  image: string;
-  rating: number;
-};
+function InteractiveCollection() {
+  const [portofolios, setPortofolios] = useState<InteractiveGame[]>([]);
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-const portofolios: Portofolio[] = [
-  {
-    id: 1,
-    title: "Ganyang Setan Alas! The Game",
-    desc: "Ganyang Setan Alas! The Game is a single-player shooter set in a haunted Indonesian forest, where four students, armed with a range of weapons, must survive relentless zombie attacks and escape a cursed fate.",
-    image: "/assets/GSA.png",
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    title: "Ganyang Setan Alas! — Chapter 2",
-    desc: "Lanjutan petualangan horor penuh aksi dalam hutan terkutuk yang semakin kelam dan berbahaya.",
-    image: "/assets/GSA.png",
-    rating: 5,
-  },
-  {
-    id: 3,
-    title: "Ganyang Setan Alas! — Final Reveal",
-    desc: "Pertarungan terakhir melawan kutukan yang memburu Anda tanpa henti.",
-    image: "/assets/GSA.png",
-    rating: 3.8,
-  },
-];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await InteractiveGameApi.getGames();
+        setPortofolios(data);
+      } catch (err) {
+        console.error("Failed to fetch works:", err);
+      }
+    };
+    fetchData();
+  }, []);
+
+// type Portofolio = {
+//   id: number;
+//   title: string;
+//   desc: string;
+//   image: string;
+//   rating: number;
+// };
+
+// const portofolios: Portofolio[] = [
+//   {
+//     id: 1,
+//     title: "Ganyang Setan Alas! The Game",
+//     desc: "Ganyang Setan Alas! The Game is a single-player shooter set in a haunted Indonesian forest, where four students, armed with a range of weapons, must survive relentless zombie attacks and escape a cursed fate.",
+//     image: "/assets/GSA.png",
+//     rating: 4.5,
+//   },
+//   {
+//     id: 2,
+//     title: "Ganyang Setan Alas! — Chapter 2",
+//     desc: "Lanjutan petualangan horor penuh aksi dalam hutan terkutuk yang semakin kelam dan berbahaya.",
+//     image: "/assets/GSA.png",
+//     rating: 5,
+//   },
+//   {
+//     id: 3,
+//     title: "Ganyang Setan Alas! — Final Reveal",
+//     desc: "Pertarungan terakhir melawan kutukan yang memburu Anda tanpa henti.",
+//     image: "/assets/GSA.png",
+//     rating: 3.8,
+//   },
+// ];
 
 const PortofolioList: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -84,7 +102,7 @@ const PortofolioList: React.FC = () => {
             <div
               className="w-full h-[70vh] min-h-[600px] bg-cover bg-center relative flex flex-col justify-center items-center"
               style={{
-                backgroundImage: `url('${item.image}')`,
+                backgroundImage: `url('${baseURL?.replace("/api", "")}${item.media?.[0]?.url.replace("/api/", "/")}')`,
               }}
             >
               {/* Overlay */}
@@ -107,7 +125,7 @@ const PortofolioList: React.FC = () => {
                       </div>
 
                       <div className="text-stone-300 text-base sm:text-lg lg:text-xl font-normal font-['Poppins'] leading-6 sm:leading-7">
-                        {item.desc}
+                        {item.description}
                       </div>
                     </div>
 
@@ -119,7 +137,7 @@ const PortofolioList: React.FC = () => {
                         const starIndex = i + 1;
 
                         // Full star
-                        if (starIndex <= item.rating) {
+                        if (starIndex <= 5) {
                           return (
                             <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                               fill="#fbbf24"
@@ -131,7 +149,7 @@ const PortofolioList: React.FC = () => {
                         }
 
                         // Empty star
-                        if (starIndex - 1 >= item.rating) {
+                        if (starIndex - 1 >= 4.5) {
                           return (
                             <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                               fill="#ffffff40"
@@ -143,7 +161,7 @@ const PortofolioList: React.FC = () => {
                         }
 
                         // Partial star (3.2, 4.8, 2.7, etc.)
-                        const fillPercent = Math.round((item.rating - (starIndex - 1)) * 100);
+                        const fillPercent = Math.round((2.7- (starIndex - 1)) * 100);
 
                         return (
                           <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

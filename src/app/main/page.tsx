@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react'
-import ServiceCard from '@/components/akasacara/home/ServiceCard';
-import PressCard from '@/components/akasacara/home/PressCard';
-import WorkCard from '@/components/akasacara/home/WorkCard';
+import ServiceCard from '@/components/film/home/ServiceCard';
+import PressCard from '@/components/film/home/PressCard';
+import WorkCard from '@/components/film/home/WorkCard';
 import Image from 'next/image';
 
 const press = [

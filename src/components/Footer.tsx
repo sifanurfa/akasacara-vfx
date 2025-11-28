@@ -11,24 +11,24 @@ export default function Footer() {
     if (pathname.startsWith("/vfx")) {
       return [
         { label: "Home", href: "/vfx" },
-        { label: "Our Works", href: "/vfx#works" },
-        { label: "Showcase", href: "/vfx#showcase" },
+        { label: "Showcase", href: "/vfx/showcase" },
+        { label: "Our Work", href: "/vfx/ourwork" },
       ];
     }
 
     if (pathname.startsWith("/interactive")) {
       return [
         { label: "Home", href: "/interactive" },
-        { label: "Portfolio", href: "/interactive#portfolio" },
-        { label: "Devlog", href: "/interactive#devlog" },
+        { label: "Newsroom", href: "/interactive/seeall" },
+        { label: "Our Works", href: "/interactive/collection" },
       ];
     }
 
     // Default: Akasacara Film (main)
     return [
       { label: "Home", href: "/main" },
-      { label: "Newsroom", href: "/main#announcement" },
-      { label: "Our Works", href: "/main#works" },
+      { label: "Newsroom", href: "/main/announcement" },
+      { label: "Our Works", href: "/main/ourwork" },
     ];
   };
 
@@ -37,13 +37,13 @@ export default function Footer() {
   const getLogoAndBrand = () => {
   if (pathname.startsWith("/interactive")) {
     return {
-      logo: "/assets/LogoInteractive.png",        // Logo Interactive
+      logo: "/assets/LogoInteractive.png",        
       alt: "LodhongKrupuk Interactive Logo",
     };
   }
   if (pathname.startsWith("/vfx")) {
     return {
-      logo: "/assets/LogoVFX.png",                // Logo VFX (pastikan filenya ada!)
+      logo: "/assets/VFXlogo.png",               
       alt: "LodhongKrupuk VFX Logo",
     };
   }
@@ -105,8 +105,22 @@ const { logo, alt } = getLogoAndBrand();
                   `}
                 >
                   {item.label}
-                  <span className="absolute inset-x-0 top-0 h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                  <span className="absolute inset-x-0 bottom-0 h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
+
+                  {/* GARIS ATAS */}
+                  <span
+                    className={`
+                      absolute inset-x-0 top-0 h-px bg-white transition-transform duration-300 origin-left
+                      ${isActiveBrand(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
+                    `}
+                  />
+
+                  {/* GARIS BAWAH */}
+                  <span
+                    className={`
+                      absolute inset-x-0 bottom-0 h-px bg-white transition-transform duration-300 origin-right
+                      ${isActiveBrand(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
+                    `}
+                  />
                 </Link>
               ))}
             </div>
