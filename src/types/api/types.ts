@@ -20,6 +20,9 @@ export interface InteractiveGame {
   title: string;
   description: string;
   trailer?: string | null;
+  link?: string | null;
+  rate: number;
+  progres: string;
   media: Media[];
 };
 

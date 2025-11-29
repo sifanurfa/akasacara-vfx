@@ -156,22 +156,32 @@ export default function InteractiveDevlog() {
 
       <Slider {...sliderSettings}>
         {devlogs.map((item) => (
-          <div key={item.id} className="px-4">
-            <div className="w-full max-w-[384px] mx-auto h-full self-stretch">
-              <div className="bg-zinc-600 rounded-lg overflow-hidden shadow-2xl flex flex-col h-full items-stretch">
-                <div className="relative w-full h-[220px] md:h-[240px] lg:h-[260px] overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+         <div key={item.id} className="px-4">
+            <div className="w-full max-w-[384px] mx-auto">
+              {/* CARD DENGAN TINGGI TETAP → PASTI SAMA 100% */}
+              <div className="bg-zinc-600 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[480px] md:h-[500px] lg:h-[520px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-3xl">
+                
+                {/* GAMBAR – tinggi tetap */}
+                <div className="relative w-full h-[260px] md:h-[280px] lg:h-[300px] flex-shrink-0 overflow-hidden">
+                  <img 
+                    src={item.image || "/fallback.jpg"} 
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
                 </div>
 
-                <div className="p-6 flex flex-col flex-1 justify-between self-stretch">
-                  <h3 className="text-white text-3xl md:text-4xl font-semibold font-['Playfair_Display'] leading-tight line-clamp-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-stone-300 text-xl font-normal font-['Poppins'] mt-4">
+                {/* ISI TEKS – pakai flex + justify-between agar tanggal selalu di bawah */}
+                <div className="p-6 md:p-8 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-white text-2xl md:text-3xl lg:text-3xl font-bold font-['Playfair_Display'] leading-tight line-clamp-3">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-stone-300 text-lg md:text-xl font-medium font-['Poppins'] mt-4">
                     {item.date}
                   </p>
                 </div>
-
               </div>
             </div>
           </div>

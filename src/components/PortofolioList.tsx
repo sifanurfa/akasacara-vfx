@@ -6,43 +6,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";
 
-function InteractiveCollection() {
-}
-// type Portofolio = {
-//   id: number;
-//   title: string;
-//   desc: string;
-//   image: string;
-//   rating: number;
-// };
-
-// const portofolios: Portofolio[] = [
-//   {
-//     id: 1,
-//     title: "Ganyang Setan Alas! The Game",
-//     desc: "Ganyang Setan Alas! The Game is a single-player shooter set in a haunted Indonesian forest, where four students, armed with a range of weapons, must survive relentless zombie attacks and escape a cursed fate.",
-//     image: "/assets/GSA.png",
-//     rating: 4.5,
-//   },
-//   {
-//     id: 2,
-//     title: "Ganyang Setan Alas! — Chapter 2",
-//     desc: "Lanjutan petualangan horor penuh aksi dalam hutan terkutuk yang semakin kelam dan berbahaya.",
-//     image: "/assets/GSA.png",
-//     rating: 5,
-//   },
-//   {
-//     id: 3,
-//     title: "Ganyang Setan Alas! — Final Reveal",
-//     desc: "Pertarungan terakhir melawan kutukan yang memburu Anda tanpa henti.",
-//     image: "/assets/GSA.png",
-//     rating: 3.8,
-//   },
-// ];
-
 const PortofolioList: React.FC = () => {
   const [portofolios, setPortofolios] = useState<InteractiveGame[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +23,37 @@ const PortofolioList: React.FC = () => {
     };
     fetchData();
   }, []);
-  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const openTrailer = (trailerUrl: string | null | undefined) => {
+    if (!trailerUrl) {
+      alert("Trailer belum tersedia untuk game ini.");
+      return;
+    }
+
+    const videoId = extractYouTubeId(trailerUrl);
+    if (videoId) {
+      setTrailerUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
+    } else {
+      // Fallback kalau format URL aneh
+      window.open(trailerUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  // Fungsi bantu ekstrak ID YouTube (support semua format YouTube)
+  const extractYouTubeId = (url: string): string | null => {
+    const regex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
+  const handleWishlist = (wishlistUrl: string | null | undefined) => {
+    if (wishlistUrl && wishlistUrl.trim() !== "") {
+      window.open(wishlistUrl, "_blank", "noopener,noreferrer");
+    } else {
+      alert("Wishlist link akan segera hadir! Stay tuned");
+    }
+  };
 
   const sliderSettings: Settings = {
     dots: true,
@@ -117,7 +115,7 @@ const PortofolioList: React.FC = () => {
                     <div className="w-full flex flex-col justify-center items-start gap-4">
                       
                       <div className="text-white text-lg sm:text-xl font-normal font-['Poppins'] leading-7">
-                        Coming Soon
+                        {item.progres}
                       </div>
 
                       <div className="text-white text-3xl sm:text-4xl lg:text-5xl font-semibold font-['Playfair_Display'] leading-tight sm:leading-[56px]">
@@ -137,7 +135,7 @@ const PortofolioList: React.FC = () => {
                         const starIndex = i + 1;
 
                         // Full star
-                        if (starIndex <= 5) {
+                        if (starIndex <= item.rate) {
                           return (
                             <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                               fill="#fbbf24"
@@ -149,7 +147,7 @@ const PortofolioList: React.FC = () => {
                         }
 
                         // Empty star
-                        if (starIndex - 1 >= 4.5) {
+                        if (starIndex - 1 >= item.rate) {
                           return (
                             <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                               fill="#ffffff40"
@@ -161,7 +159,7 @@ const PortofolioList: React.FC = () => {
                         }
 
                         // Partial star (3.2, 4.8, 2.7, etc.)
-                        const fillPercent = Math.round((2.7- (starIndex - 1)) * 100);
+                        const fillPercent = Math.round((item.rate- (starIndex - 1)) * 100);
 
                         return (
                           <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -184,7 +182,9 @@ const PortofolioList: React.FC = () => {
 
                       {/* Buttons */}
                       <div className="flex flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
-                        <button className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white flex justify-center items-center gap-2 sm:gap-3 hover:bg-gray-100 transition-colors min-w-[160px] sm:min-w-[180px]">
+                        <button 
+                         onClick={() => handleWishlist(item.link)}
+                        className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white flex justify-center items-center gap-2 sm:gap-3 hover:bg-gray-100 transition-colors min-w-[160px] sm:min-w-[180px]">
                           <img
                             src="/assets/wht.png"
                             alt="Wishlist Icon"
@@ -195,7 +195,9 @@ const PortofolioList: React.FC = () => {
                           </div>
                         </button>
 
-                        <button className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-[50px] flex justify-center items-center gap-2 sm:gap-3 hover:bg-white/20 transition-colors min-w-[160px] sm:min-w-[180px]">
+                        <button
+                        onClick={() => openTrailer(item.trailer)} 
+                        className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-[50px] flex justify-center items-center gap-2 sm:gap-3 hover:bg-white/20 transition-colors min-w-[160px] sm:min-w-[180px]">
                           <img
                             src="/assets/wth.png"
                             alt="Trailer Icon"
@@ -221,8 +223,72 @@ const PortofolioList: React.FC = () => {
           </div>
         ))}
       </Slider>
+      {trailerUrl && (
+        <div
+          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4"
+          onClick={() => setTrailerUrl(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl bg-black rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()} // biar klik di dalam modal tidak menutup
+          >
+            {/* Tombol Close */}
+            <button
+              onClick={() => setTrailerUrl(null)}
+              className="absolute top-4 right-4 z-10 text-white text-5xl hover:text-gray-300 transition-all hover:scale-110"
+            >
+              ×
+            </button>
+
+            {/* YouTube Player */}
+            <div className="relative pt-[56.25%]"> {/* 16:9 aspect ratio */}
+              <iframe
+                src={trailerUrl}
+                title="Game Trailer"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default PortofolioList;
+
+// function InteractiveCollection() {
+// }
+// type Portofolio = {
+//   id: number;
+//   title: string;
+//   desc: string;
+//   image: string;
+//   rating: number;
+// };
+
+// const portofolios: Portofolio[] = [
+//   {
+//     id: 1,
+//     title: "Ganyang Setan Alas! The Game",
+//     desc: "Ganyang Setan Alas! The Game is a single-player shooter set in a haunted Indonesian forest, where four students, armed with a range of weapons, must survive relentless zombie attacks and escape a cursed fate.",
+//     image: "/assets/GSA.png",
+//     rating: 4.5,
+//   },
+//   {
+//     id: 2,
+//     title: "Ganyang Setan Alas! — Chapter 2",
+//     desc: "Lanjutan petualangan horor penuh aksi dalam hutan terkutuk yang semakin kelam dan berbahaya.",
+//     image: "/assets/GSA.png",
+//     rating: 5,
+//   },
+//   {
+//     id: 3,
+//     title: "Ganyang Setan Alas! — Final Reveal",
+//     desc: "Pertarungan terakhir melawan kutukan yang memburu Anda tanpa henti.",
+//     image: "/assets/GSA.png",
+//     rating: 3.8,
+//   },
+// ];
