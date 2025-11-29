@@ -7,21 +7,7 @@ import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";
 
 function InteractiveCollection() {
-  const [portofolios, setPortofolios] = useState<InteractiveGame[]>([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await InteractiveGameApi.getGames();
-        setPortofolios(data);
-      } catch (err) {
-        console.error("Failed to fetch works:", err);
-      }
-    };
-    fetchData();
-  }, []);
-
+}
 // type Portofolio = {
 //   id: number;
 //   title: string;
@@ -55,6 +41,20 @@ function InteractiveCollection() {
 // ];
 
 const PortofolioList: React.FC = () => {
+  const [portofolios, setPortofolios] = useState<InteractiveGame[]>([]);
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await InteractiveGameApi.getGames();
+        setPortofolios(data);
+      } catch (err) {
+        console.error("Failed to fetch works:", err);
+      }
+    };
+    fetchData();
+  }, []);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const sliderSettings: Settings = {
