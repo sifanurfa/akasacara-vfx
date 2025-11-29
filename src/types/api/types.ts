@@ -21,6 +21,15 @@ export interface InteractiveGame {
   description: string;
   trailer?: string | null;
   link?: string | null;
+  media: Media[];
+};
+
+export interface InteractiveGamePortofolio {
+  id: number;
+  title: string;
+  description: string;
+  trailer?: string | null;
+  link?: string | null;
   rate: number;
   progres: string;
   media: Media[];

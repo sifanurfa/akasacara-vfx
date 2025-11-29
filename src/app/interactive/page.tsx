@@ -2,7 +2,7 @@
 
 import React from 'react';
 import DevlogSlider from '@/components/DevlogSlider'
-import PortofolioList from '@/components/PortofolioList';
+import PortofolioList from './PortofolioList';
 import Footer from '@/components/Footer';
 const Home = () => {
     return (
@@ -35,6 +35,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
             {/* LATEST DEVLOG */}
             <div className="max-w-[1440px] w-full mx-auto py-24 flex flex-col justify-center items-center gap-14 overflow-visible">
                 {/* TITLE + SEE ALL */}

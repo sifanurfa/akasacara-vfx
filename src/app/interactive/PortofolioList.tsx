@@ -4,10 +4,12 @@ import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { InteractiveGameApi } from "@/lib/api";
-import { InteractiveGame } from "@/types/api/types";
+import { InteractiveGamePortofolio } from "@/types/api/types";
+import WishlistNowBtn from "@/components/interactive/homepage/WishlistNowBtn";
+import WatchTrailerBtn from "@/components/interactive/homepage/WatchTrailerBtn";
 
 const PortofolioList: React.FC = () => {
-  const [portofolios, setPortofolios] = useState<InteractiveGame[]>([]);
+  const [portofolios, setPortofolios] = useState<InteractiveGamePortofolio[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
@@ -23,37 +25,6 @@ const PortofolioList: React.FC = () => {
     };
     fetchData();
   }, []);
-
-  const openTrailer = (trailerUrl: string | null | undefined) => {
-    if (!trailerUrl) {
-      alert("Trailer belum tersedia untuk game ini.");
-      return;
-    }
-
-    const videoId = extractYouTubeId(trailerUrl);
-    if (videoId) {
-      setTrailerUrl(`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
-    } else {
-      // Fallback kalau format URL aneh
-      window.open(trailerUrl, "_blank", "noopener,noreferrer");
-    }
-  };
-
-  // Fungsi bantu ekstrak ID YouTube (support semua format YouTube)
-  const extractYouTubeId = (url: string): string | null => {
-    const regex =
-      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-    const match = url.match(regex);
-    return match ? match[1] : null;
-  };
-
-  const handleWishlist = (wishlistUrl: string | null | undefined) => {
-    if (wishlistUrl && wishlistUrl.trim() !== "") {
-      window.open(wishlistUrl, "_blank", "noopener,noreferrer");
-    } else {
-      alert("Wishlist link akan segera hadir! Stay tuned");
-    }
-  };
 
   const sliderSettings: Settings = {
     dots: true,
@@ -182,31 +153,8 @@ const PortofolioList: React.FC = () => {
 
                       {/* Buttons */}
                       <div className="flex flex-col sm:flex-row justify-start items-start sm:items-center gap-3 sm:gap-4">
-                        <button 
-                         onClick={() => handleWishlist(item.link)}
-                        className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white flex justify-center items-center gap-2 sm:gap-3 hover:bg-gray-100 transition-colors min-w-[160px] sm:min-w-[180px]">
-                          <img
-                            src="/assets/wht.png"
-                            alt="Wishlist Icon"
-                            className="w-4 h-3 sm:w-5 sm:h-4 object-contain"
-                          />
-                          <div className="text-black text-sm sm:text-base font-semibold font-['Poppins']">
-                            Wishlist Now
-                          </div>
-                        </button>
-
-                        <button
-                        onClick={() => openTrailer(item.trailer)} 
-                        className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-[50px] flex justify-center items-center gap-2 sm:gap-3 hover:bg-white/20 transition-colors min-w-[160px] sm:min-w-[180px]">
-                          <img
-                            src="/assets/wth.png"
-                            alt="Trailer Icon"
-                            className="w-4 h-3 sm:w-5 sm:h-4 object-contain"
-                          />
-                          <div className="text-white text-sm sm:text-base font-semibold font-['Poppins']">
-                            Watch Trailer
-                          </div>
-                        </button>
+                        <WishlistNowBtn link={item.link} />
+                        <WatchTrailerBtn trailerUrl={item.trailer} setTrailerUrl={setTrailerUrl} />
                       </div>
                     </div>
                   </div>
