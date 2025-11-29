@@ -106,7 +106,7 @@ function AkasacaraHome() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await AnnouncementFilmApi.getAnnouncement();
+        const data = await AnnouncementFilmApi.getAll();
         setPress(data);
       } catch (err) {
         console.error("Failed to fetch works:", err);
