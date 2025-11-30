@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AnnouncementFilmApi } from "@/lib/api";
 import { AnnouncementFilm } from "@/types/api/types";
+import Footer from "@/components/Footer";
 
 const services = [
   {
@@ -223,6 +224,7 @@ function AkasacaraHome() {
             </div>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }

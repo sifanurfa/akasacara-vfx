@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from "./Poster.module.css";
-import PosterSlider from '@/components/vfx/home/PosterSlider';
 import AboutUsSection from './VFXAboutUs';
 import ShowcaseSection from './VFXShowcaseSection';
 import PortofolioSection from './PortofolioSection';
+import Footer from '@/components/Footer';
 
 function VFXHome() {
   return (
@@ -36,10 +36,12 @@ function VFXHome() {
         </div>
 
         <PortofolioSection/>
-        <PosterSlider/>
 
         <ShowcaseSection/>
+
         <AboutUsSection/>
+
+        <Footer/>
     </div>
   )
 }

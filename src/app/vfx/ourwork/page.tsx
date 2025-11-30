@@ -3,6 +3,7 @@
 import React from 'react';
 import PosterShowcase from '@/components/vfx/ourwork/PosterShowcase'
 import ProjectList from '@/components/vfx/ourwork/ProjectList';
+import Footer from '@/components/Footer';
 
 
 const OurWork = () => {
@@ -34,8 +35,15 @@ const OurWork = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col self-stretch ">
-                    <img src="/assets/GanyangSetanAlas.jpg" alt="About Us Akasacara" className="w-full card-pictporto" />
+                <div className="relative w-full h-[810px] overflow-hidden">
+                   <video 
+                        src="/assets/video_vfx.mp4" 
+                        autoPlay 
+                        loop 
+                        muted
+                        playsInline 
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
                 </div>
             </div>
             {/*SUBTITLE */}
@@ -54,10 +62,12 @@ const OurWork = () => {
             <div className="flex py-section justify-center items-center self-stretch gap-2.5">
                 <h1 className="vfx-text-title text-center headline-1 uppercase">ALL PROJECT</h1>
             </div>   
+
             {/* PROJECT LIST */}
-            <div>
-                <ProjectList/>
-            </div>
+            <ProjectList/>
+
+            {/* FOOTER */}
+            <Footer/>
         </div>
     );
 };

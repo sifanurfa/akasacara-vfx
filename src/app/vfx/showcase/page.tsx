@@ -5,6 +5,7 @@ import styles from "./Showcase.module.css";
 import ContentCard from '@/components/vfx/showcase/ContentCard';
 import LatestBreakdown from './LatestBreakdownSection';
 import Breakdown from '@/components/vfx/showcase/Breakdown';
+import Footer from '@/components/Footer';
 
 const announcements = [
   {
@@ -78,6 +79,7 @@ function VFXShowcase() {
                 ))}
             </div>
         </div>
+        <Footer/>
     </div>
   )
 }

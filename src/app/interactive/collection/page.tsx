@@ -6,6 +6,7 @@ import styles from "./Collection.module.css";
 import PopularGame from "@/components/interactive/collection/PopularGame";
 import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";
+import Footer from "@/components/Footer";
 
 function InteractiveCollection() {
   const [works, setWorks] = useState<InteractiveGame[]>([]);
@@ -124,6 +125,7 @@ function InteractiveCollection() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
