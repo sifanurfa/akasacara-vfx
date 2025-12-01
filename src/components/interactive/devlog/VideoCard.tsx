@@ -10,7 +10,7 @@ type PressCardProps = {
   urlMedia: string;
 };
 
-function VideoCard({ title, image, date, urlMedia }: PressCardProps) {
+function VideoCard({ title, date, urlMedia }: PressCardProps) {
     // buka halaman article / eksternal link
     const handlePress = () => {
         if (typeof window !== "undefined") {

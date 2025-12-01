@@ -22,5 +22,5 @@ export interface DevlogInteractives {
   content?: string | null;
   date: string;
   media: DevlogMedia[];
-  image?: string; // final processed src
+  image: string; // final processed src
 }
