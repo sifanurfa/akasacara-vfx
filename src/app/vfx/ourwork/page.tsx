@@ -17,7 +17,7 @@ const OurWork = () => {
                     <h1 className="vfx-text-title title px-section">Showcasing Excellence in Post & VFX</h1>
                 </div>
             </div>
-            {/* BRAKEDOWN */}
+            {/* BREAKDOWN */}
             <div className="flex flex-col items-start self-stretch py-section gap-3xl">
                 <div className="flex px-container justify-center items-start self-stretch gap-[397px]">
                     <div className="flex justify-between items-center flex-1">
@@ -49,7 +49,7 @@ const OurWork = () => {
             {/*SUBTITLE */}
             <div className="flex flex-col py-section px-container">
                 <div className="inline-flex flex-col justify-center">
-                    <h1 className="vfx-text-title headline-2">We've helped shape visual <br/>
+                    <h1 className="vfx-text-title headline-2">We&apos;ve helped shape visual <br/>
                     storytelling by crafting <br/>
                     groundbreaking VFX experiences.</h1>
                 </div>

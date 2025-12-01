@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Showcase.module.css";
 import { Comparison, ComparisonHandle, ComparisonItem } from '@/components/ui/shadcn-io/comparison';
+import { BreakdownVFX } from "@/types/api/vfx"
+import { BreakdownVFXApi } from "@/lib/api"
 
 const slides = [
   { beforeImg: "/assets/SetanAlas1Before.png", afterImg: "/assets/SetanAlas1After.png", title: "Setan Alas" },
@@ -20,6 +22,20 @@ const slides = [
 export default function Breakdown() {
   const [activeIndex, setActiveIndex] = useState(0);
   const thumbSliderRef = useRef<Slider | null>(null);
+    const [breakdown, setBreakdown] = useState<BreakdownVFX[]>([]);
+
+  // ambil breakdown data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await BreakdownVFXApi.getAll();
+        setBreakdown(data);
+      } catch (err) {
+        console.error("Failed to fetch works:", err);
+      }
+    };
+    fetchData();
+  }, []);
 
   const thumbSettings = {
     slidesToShow: 4,
@@ -35,12 +51,20 @@ export default function Breakdown() {
     setActiveIndex(index);
   };
 
+  const handleWatchHere = (link?: string | null) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else {
+      alert("Trailer not available yet.");
+    }
+  };
+
   return (
     <div className="flex pb-section pt-l px-container items-stretch gap-xl self-stretch">
       {/* MAIN */}
       <div className="flex-5 h-full w-full overflow-hidden">
-        {slides.map(
-          (slide, idx) =>
+        {breakdown.map(
+          (item, idx) =>
             idx === activeIndex && (
               <div key={idx} className="flex flex-col items-start self-stretch fadeIn">
                 <Comparison
@@ -51,8 +75,8 @@ export default function Breakdown() {
                 >
                   <ComparisonItem position="left">
                     <Image
-                      src={slide.afterImg}
-                      alt={`${slide.title} left`}
+                      src={item.afterImage}
+                      alt={`${item.title} left`}
                       width={780}
                       height={520}
                       className="w-full h-full object-cover"
@@ -60,8 +84,8 @@ export default function Breakdown() {
                   </ComparisonItem>
                   <ComparisonItem position="right">
                     <Image
-                      src={slide.beforeImg}
-                      alt={`${slide.title} right`}
+                      src={item.beforeImage}
+                      alt={`${item.title} right`}
                       width={780}
                       height={520}
                       className="w-full h-full object-cover"
@@ -86,10 +110,10 @@ export default function Breakdown() {
 
                 <div className="flex justify-between items-start mt-m self-stretch">
                   <div className="flex flex-col items-start gap-3">
-                    <div className="self-stretch vfx-text-title headline-3">{slide.title}</div>
-                    <div className="self-stretch vfx-text-subtitle-1 body-reg">{slide.title}</div>
+                    <div className="self-stretch vfx-text-title headline-3">{item.title}</div>
+                    <div className="self-stretch vfx-text-subtitle-1 body-reg">{item.description}</div>
                   </div>
-                  <p className="vfx-text-title button-secondary pe-1">WATCH HERE</p>
+                  <p onClick={() => handleWatchHere(item.link)} className="vfx-text-title button-secondary pe-1 cursor-pointer">WATCH HERE</p>
                 </div>
               </div>
             )
@@ -99,7 +123,7 @@ export default function Breakdown() {
       {/* THUMBNAIL SLIDER */}
       <div className="flex-1 h-full items-center gap-4 relative">
         <Slider ref={thumbSliderRef} {...thumbSettings}>
-          {slides.map((slide, idx) => (
+          {breakdown.map((item, idx) => (
             <div
               key={idx}
               className={`relative py-2.5 cursor-pointer transition-all duration-300`}
@@ -107,8 +131,8 @@ export default function Breakdown() {
             >
               <div className="flex flex-col justify-center items-end self-stretch relative">
                 <Image
-                  src={slide.beforeImg}
-                  alt={slide.title}
+                  src={item.beforeImage}
+                  alt={item.title}
                   width={240}
                   height={135}
                   className={`object-cover transition-all`}
@@ -116,7 +140,7 @@ export default function Breakdown() {
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0"></div>
                 <div className="absolute flex  px-m flex-col items-center gap-s">
-                  <div className={`flex self-stretch vfx-text-title ${styles.breakdown_series_title}`}>{slide.title}</div>
+                  <div className={`flex self-stretch vfx-text-title ${styles.breakdown_series_title}`}>{item.title}</div>
                 </div>
               </div>
             </div>

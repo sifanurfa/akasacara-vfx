@@ -7,7 +7,7 @@ interface WatchTrailerBtnProps {
 function WatchTrailerBtn({ trailerUrl }: WatchTrailerBtnProps) {
   const handleClick = () => {
     if (trailerUrl) {
-      window.open(trailerUrl, "_blank");
+      window.open(trailerUrl, "_blank", "noopener,noreferrer");
     } else {
       alert("Trailer not available yet.");
     }
