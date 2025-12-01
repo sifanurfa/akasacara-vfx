@@ -9,7 +9,6 @@ import { DevlogInteractives } from "@/types/api/devlog";
 
 export default function InteractiveDevlog() {
   const [devlogs, setDevlogs] = useState<DevlogInteractives[]>([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,16 +21,6 @@ export default function InteractiveDevlog() {
     };
     fetchData();
   }, []);
-
-  // // Dummy data untuk sementara
-  // const devlogs = [
-  //   { id: 1, title: "GOD HELP US! — Codename for the Next Demo", date: "25 October 2025", image: "/assets/ld01.png" },
-  //   { id: 2, title: "DEVLOG 16 OCT 2025 — Addressing Bugs", date: "16 October 2025", image: "/assets/ld02.png" },
-  //   { id: 3, title: "We are participating STEAM NEXT FEST 2025!", date: "13 October 2025", image: "/assets/ld03.png" },
-  //   { id: 4, title: "GOD HELP US! — Codename for the Next Demo", date: "25 October 2025", image: "/assets/ld01.png" },
-  //   { id: 5, title: "DEVLOG 16 OCT 2025 — Addressing Bugs", date: "16 October 2025", image: "/assets/ld02.png" },
-  //   { id: 6, title: "We are participating STEAM NEXT FEST 2025!", date: "13 October 2025", image: "/assets/ld03.png" },
-  // ];
 
   // Custom Arrow
   function PrevArrow({ onClick }: { onClick?: () => void }) {

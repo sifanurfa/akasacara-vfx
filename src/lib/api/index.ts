@@ -1,4 +1,5 @@
 export * from "./interactive/game";
+export * from "./interactive/announcement";
 export * from "./film/announcement";
 export * from "./film/film";
 export * from "./film/video";

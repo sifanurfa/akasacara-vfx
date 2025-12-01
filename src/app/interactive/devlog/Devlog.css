@@ -1,0 +1,21 @@
+.judul {
+  font-family: var(--font-poppins);
+  font-size: var(--text-body);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--text-lineheight-body);
+}
+.description {
+  font-family: var(--font-poppins);
+  font-size: var(--text-body);
+  font-style: normal;
+  font-weight: 300;
+  line-height: var(--text-lineheight-body);
+}
+.read-more {
+  font-family: var(--font-poppins);
+  font-size: var(--text-button-sec);
+  font-style: italic;
+  font-weight: 600;
+  line-height: var(--text-lineheight-button-sec);
+}

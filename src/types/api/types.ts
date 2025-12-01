@@ -121,3 +121,16 @@ export interface VFX {
   year: number;
   media: Media[];
 }
+
+export interface AnnouncementInteractive {
+  id: number;
+  documentId: string;
+  identifier: string;
+  urlMedia: string;
+  title: string;
+  image: string;
+  announceType: string;
+  item: string;
+  date: string;
+  media: Media[];
+};
