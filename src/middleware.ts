@@ -11,6 +11,25 @@ export function middleware(req: NextRequest) {
       ? hostname.replace(".akasacara.web.id", "")
       : hostname.replace(".localhost:3000", "").replace(".localhost", "");
 
+  // kalau masih pakai vercel domain
+  if (hostname.includes("akasacara.vercel.app")) {
+    const sub = req.nextUrl.searchParams.get("domain");
+    switch (sub) {
+      case "vfx":
+        url.pathname = `/vfx${url.pathname}`;
+        break;
+      case "interactive":
+        url.pathname = `/interactive${url.pathname}`;
+        break;
+      case "film":
+        url.pathname = `/main${url.pathname}`;
+        break;
+      default:
+        url.pathname = `/akasacara${url.pathname}`;
+        break;
+    }
+  }
+
   // Tentukan domain mana
   switch (currentHost) {
     case "vfx":
