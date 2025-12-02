@@ -66,6 +66,7 @@ export interface AnnouncementFilm {
   documentId: string;
   identifier: string;
   urlMedia: string;
+  image: string;
   title: string;
   announceType: string;
   item: string;
@@ -87,15 +88,20 @@ export interface Film {
   id: number;
   documentId: string;
   title: string;
-  description: string | null;
-  genre: string | null;
-  link: string | null;
-  image: string;
-  trailer: string | null;
-  awardedFilm: boolean | null;
-  projectType: string | null;
-  year: number | null;
-  media: Media[];
+  description: string;
+  genre: string;
+  genreList: string[];
+  link: string;
+  potraitImage: string;
+  landscapeImage: string;
+  awardedImage: string;
+  trailer: string;
+  awardedFilm: boolean;
+  projectType: string;
+  year: number;
+  potraitMedia: Media[];
+  awardedMedia: Media[];
+  landscapeMedia: Media[];
 }
 
 export interface Video {

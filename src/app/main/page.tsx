@@ -101,7 +101,7 @@ function AkasacaraHome() {
             <video
               autoPlay
               loop
-              muted
+              // muted
               playsInline
               className="absolute top-0 left-0 w-full h-full object-cover"
             >
@@ -176,7 +176,7 @@ function AkasacaraHome() {
                 id={item.id}
                 title={item.title}
                 year={item.year}
-                image={item.image}
+                image={item.landscapeImage}
                 description={item.description}
                 type={item.projectType}
                 isLast={index === film.length - 1}
