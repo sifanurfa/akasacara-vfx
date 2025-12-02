@@ -27,7 +27,14 @@ export const AnnouncementInteractiveApi = {
           })
         : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        urlMedia: item.urlMedia,
+        image: fullUrl,
+        date: formattedDate 
+      };
     });
 
     // Urutkan data kalau parameter sort ada
@@ -63,7 +70,14 @@ export const AnnouncementInteractiveApi = {
         })
       : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        urlMedia: item.urlMedia,
+        image: fullUrl,
+        date: formattedDate 
+      };
     });
   },
   getDevlog: async (options?: { limit?: number; sort?: "asc" | "desc" }) => {
@@ -89,7 +103,14 @@ export const AnnouncementInteractiveApi = {
         })
       : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        urlMedia: item.urlMedia,
+        image: fullUrl,
+        date: formattedDate 
+      };
     });
 
     // Urutkan data kalau parameter sort ada
@@ -118,11 +139,6 @@ export const AnnouncementInteractiveApi = {
     }
 
     let data: ArticleWithRawDate[] = res.data.data.map((item: AnnouncementInteractive) => {
-      const url = item.media?.[0]?.url || "";
-      const fullUrl = url.startsWith("http")
-        ? url
-        : `${API_URL}${url.replace("/api/", "/")}`;
-
       const formattedDate = item.date
         ? new Date(item.date).toLocaleDateString("en-US", {
             year: "numeric",
@@ -131,7 +147,14 @@ export const AnnouncementInteractiveApi = {
           })
         : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        urlMedia: item.urlMedia,
+        ytChannel: item.ytChannel,
+        date: formattedDate 
+      };
     });
 
     // Urutkan data kalau parameter sort ada
@@ -160,11 +183,6 @@ export const AnnouncementInteractiveApi = {
     }
 
     let data: ArticleWithRawDate[] = res.data.data.map((item: AnnouncementInteractive) => {
-      const url = item.media?.[0]?.url || "";
-      const fullUrl = url.startsWith("http")
-        ? url
-        : `${API_URL}${url.replace("/api/", "/")}`;
-
       const formattedDate = item.date
         ? new Date(item.date).toLocaleDateString("en-US", {
             year: "numeric",
@@ -175,7 +193,15 @@ export const AnnouncementInteractiveApi = {
 
       const genre = item.genre.split(", ");
 
-      return { ...item, image: fullUrl, date: formattedDate, genreList: genre };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        item: item.item,
+        urlMedia: item.urlMedia,
+        date: formattedDate,
+        genreList: genre,
+      };
     });
 
     // Urutkan data kalau parameter sort ada
@@ -217,7 +243,15 @@ export const AnnouncementInteractiveApi = {
           })
         : "";
 
-      return { ...item, image: fullUrl, date: formattedDate };
+      return {
+        id: item.id,
+        documentId: item.documentId,
+        title: item.title,
+        urlMedia: item.urlMedia,
+        item: item.item,
+        image: fullUrl,
+        date: formattedDate 
+      };
     });
 
     // Urutkan data kalau parameter sort ada

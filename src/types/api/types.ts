@@ -134,6 +134,7 @@ export interface AnnouncementInteractive {
   identifier: string;
   urlMedia: string;
   title: string;
+  ytChannel: string;
   image: string;
   announceType: string;
   genre: string;

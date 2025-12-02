@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import Link from 'next/link';
 
 // Custom Cursor Component
 const CustomCursor = ({ isHovering, isHidden }: { isHovering: boolean; isHidden: boolean }) => {
@@ -28,7 +29,7 @@ const CustomCursor = ({ isHovering, isHidden }: { isHovering: boolean; isHidden:
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-24 h-24 pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 w-24 h-24 pointer-events-none z-9999 mix-blend-difference"
             style={{
                 x: cursorXSpring,
                 y: cursorYSpring,
@@ -110,69 +111,77 @@ export default function AkasacaraPage() {
     };
 
     return (
-        <main className="w-screen h-screen bg-[#F4BB26] relative overflow-hidden cursor-none">
+        <main className="w-screen h-screen bg-akasacara-yellow relative overflow-hidden cursor-none">
             <CustomCursor isHovering={isHovering || hoveredSection !== null} isHidden={isNavHovering} />
 
+            <style jsx>{`
+                .text-navbar {
+                    font-family: var(--font-poppins);
+                    font-size: var(--text-button-sec);
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: var(--text-lineheight-button-sec);
+                    }
+            `}</style>
             {/* Navigation Bar */}
             <nav
-                className="absolute left-1/2 -translate-x-1/2 z-20 cursor-auto"
+                className="absolute z-20 left-1/2 -translate-x-1/2 cursor-auto w-full md:px-xl px-0"
                 style={{ top: '65px' }}
                 onMouseEnter={() => setIsNavHovering(true)}
                 onMouseLeave={() => setIsNavHovering(false)}
             >
-                <div
-                    className="flex flex-row items-center justify-between backdrop-blur-sm"
-                    style={{
-                        width: '950px',
-                        height: '60px',
-                        padding: '16px 80px',
-                        background: 'rgba(0, 0, 0, 0.15)',
-                        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                        borderRadius: '15px'
-                    }}
-                >
-                    <button
-                        onClick={() => handleNavClick('LodhongKrupuk VFX')}
-                        className="text-white font-medium text-base transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
-                            setIsHovering(true);
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.textShadow = '';
-                            setIsHovering(false);
+                <div className="flex justify-center w-full">
+                    <div
+                        className="vfx-text-title text-navbar grid grid-cols-1 lg:grid-cols-3 justify-between items-center backdrop-blur-sm py-m px-4xl gap-x-4xl gap-y-l"
+                        style={{
+                            background: 'rgba(0, 0, 0, 0.15)',
+                            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                            borderRadius: '15px'
                         }}
                     >
-                        LodhongKrupuk VFX
-                    </button>
-                    <button
-                        onClick={() => handleNavClick('Film.Akasacara')}
-                        className="text-white font-medium text-base transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
-                            setIsHovering(true);
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.textShadow = '';
-                            setIsHovering(false);
-                        }}
-                    >
-                        Film.Akasacara
-                    </button>
-                    <button
-                        onClick={() => handleNavClick('LodhongKrupuk Interactive')}
-                        className="text-white font-medium text-base transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
-                            setIsHovering(true);
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.textShadow = '';
-                            setIsHovering(false);
-                        }}
-                    >
-                        LodhongKrupuk Interactive
-                    </button>
+                        <Link
+                            href="/vfx"
+                            className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
+                                setIsHovering(true);
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.textShadow = '';
+                                setIsHovering(false);
+                            }}
+                        >
+                            LodhongKrupuk VFX
+                        </Link>
+                        <Link
+                            href="/film"
+                            className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
+                                setIsHovering(true);
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.textShadow = '';
+                                setIsHovering(false);
+                            }}
+                        >
+                            Film.Akasacara
+                        </Link>
+                        <Link
+                            href="/interactive"
+                            className="self-stretch text-center transition-all duration-300 cursor-pointer whitespace-nowrap hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]"
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(255,255,255,0.6)';
+                                setIsHovering(true);
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.textShadow = '';
+                                setIsHovering(false);
+                            }}
+                        >
+                            LodhongKrupuk Interactive
+                        </Link>
+                    </div>
                 </div>
             </nav>
 
@@ -182,7 +191,7 @@ export default function AkasacaraPage() {
                     }`}
             >
                 <div
-                    className={`relative transition-all duration-[1500ms] ease-out ${isLogoVisible
+                    className={`relative transition-all duration-1500 ease-out ${isLogoVisible
                         ? 'opacity-100 scale-100 blur-0 rotate-0'
                         : 'opacity-0 scale-95 blur-sm rotate-1'
                         }`}
