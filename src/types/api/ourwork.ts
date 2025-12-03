@@ -20,5 +20,9 @@ export interface OurWorkVFX {
   id: number;
   title: string;
   year: string;
-  media: OurWorkMedia[];
+  image: string;
+  media?: {
+    url: string;
+    formats?: any;
+  };
 }

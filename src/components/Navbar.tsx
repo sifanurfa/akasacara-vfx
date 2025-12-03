@@ -50,7 +50,7 @@ export default function Navbar() {
       menu: [
         { label: "Home", href: "/main" },
         { label: "Newsroom", href: "/main/announcement" },
-        { label: "Our Works", href: "/main/ourwork" },
+        { label: "Our Works", href: "/main/ourworks" },
       ],
       logoSrc: "/assets/LogoAkasacaraV2.png",
       logoAlt: "Akasacara Film Logo",

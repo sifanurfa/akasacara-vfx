@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './Poster.module.css';
 import { OurWorkVFXApi } from "@/lib/api";
 import { OurWorkVFX } from "@/types/api/ourwork";
+import Link from 'next/link';
 
 // const posters = [
 //   { id: 1, src: "/assets/gowok.png", title: "Gowok", highlightedTitle: "Gowok 2025" },
@@ -17,8 +18,7 @@ import { OurWorkVFX } from "@/types/api/ourwork";
 
 export default function PortofolioSection() {
   const [posters, setPosters] = useState<OurWorkVFX[]>([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const [activeIndex, setActiveIndex] = useState(1); // Mulai dari Darah Nyai (sesuai Figma)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const handleClick = (index: number) => {
     if (index !== activeIndex) setActiveIndex(index);
@@ -35,15 +35,6 @@ export default function PortofolioSection() {
       };
       fetchData();
     }, []);
-
-  const getImageUrl = (mediaArray?: any[]) => {
-    if (!mediaArray || mediaArray.length === 0) {
-      return "https://placehold.co/377x565?text=No+Image"; // fallback
-    }
-    const url = mediaArray[0].url;
-    if (url.startsWith("http")) return url;
-    return `${baseURL?.replace("/api", "")}${url.startsWith("/api") ? url.replace("/api", "") : url}`;
-  };
 
   if (posters.length === 0) {
     return (
@@ -78,10 +69,10 @@ export default function PortofolioSection() {
       {/* Header */}
       <div className="flex justify-between items-end self-stretch">
         <div className="headline-1 vfx-text-title">OUR WORKS</div>
-        <div className="flex items-center gap-4 cursor-pointer">
+        <Link href="/vfx/ourwork" className="flex items-center gap-4 cursor-pointer">
           <span className="button-main text-center vfx-text-title">SEE ALL</span>
           <span className="see-all vfx-text-title">&gt;</span>
-        </div>
+        </Link>
       </div>
 
       {/* Slider */}
@@ -90,7 +81,7 @@ export default function PortofolioSection() {
           {/* Poster Kiri */}
           <div className="flex flex-col items-start gap-4 flex-shrink-0">
             <div className={styles.posterWrapper} onClick={() => handleClick((activeIndex - 1 + posters.length) % posters.length)}>
-              <Image src={getImageUrl(ordered[0].media)} alt={ordered[0].title} fill className="object-cover cursor-pointer" />
+              <Image src={ordered[0].image} alt={ordered[0].title} fill className="object-cover cursor-pointer" />
             </div>
             <div className="vfx-text-title sub-heading-light">{ordered[0].title}</div>
           </div>
@@ -98,7 +89,7 @@ export default function PortofolioSection() {
           {/* Poster AKTIF (Tengah) */}
           <div className="flex flex-col items-center gap-6 flex-shrink-0 z-10">
             <div className={styles.highlightedPoster} onClick={() => handleClick(activeIndex)}>
-              <Image src={getImageUrl(ordered[1].media)} alt={ordered[1].title} fill className="object-cover cursor-pointer" />
+              <Image src={ordered[1].image} alt={ordered[1].title} fill className="object-cover cursor-pointer" />
             </div>
             <div className="headline-3 text-white text-center">
               {ordered[1].title}
@@ -108,7 +99,7 @@ export default function PortofolioSection() {
           {/* Poster Kanan 1 */}
           <div className="flex flex-col items-start gap-4 flex-shrink-0">
             <div className={styles.posterWrapper} onClick={() => handleClick((activeIndex + 1 + posters.length) % posters.length)}>
-              <Image src={getImageUrl(ordered[2].media)} alt={ordered[2].title} fill className="object-cover cursor-pointer" />
+              <Image src={ordered[2].image} alt={ordered[2].title} fill className="object-cover cursor-pointer" />
             </div>
             <div className="vfx-text-title sub-heading-light">{ordered[2].title}</div>
           </div>
@@ -116,7 +107,7 @@ export default function PortofolioSection() {
           {/* Poster Paling Kanan (setengah keluar) */}
           <div className="flex flex-col items-start gap-4 flex-shrink-0">
             <div className={styles.posterWrapper} onClick={() => handleClick((activeIndex + 2 + posters.length) % posters.length)}>
-              <Image src={getImageUrl(ordered[3].media)} alt={ordered[3].title} fill className="object-cover cursor-pointer" />
+              <Image src={ordered[3].image} alt={ordered[3].title} fill className="object-cover cursor-pointer" />
             </div>
             <div className="vfx-text-title sub-heading-light">{ordered[3].title}</div>
           </div>

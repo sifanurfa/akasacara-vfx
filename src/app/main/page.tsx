@@ -90,6 +90,13 @@ function AkasacaraHome() {
           </div>
           {/* showreel */}
           <div className={`flex flex-col pb-section items-start self-stretch aspect-video`}>
+              <div className="absolute top-6 left-6 z-10">
+                <img
+                  src="/assets/LogoAkasacara.png"
+                  alt="Akasacara Film Logo"
+                  className="w-64 h-15"
+                />
+              </div>
               <video 
               src="/assets/video_vfx.mp4" 
               autoPlay 

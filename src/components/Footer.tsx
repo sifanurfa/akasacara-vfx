@@ -34,7 +34,7 @@ export default function Footer() {
     return [
       { label: "Home", href: "/main" },
       { label: "Newsroom", href: "/main/announcement" },
-      { label: "Our Works", href: "/main/ourwork" },
+      { label: "Our Works", href: "/main/ourworks" },
     ];
   };
   const quickLinks = getQuickLinks();

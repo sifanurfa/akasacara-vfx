@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import Footer from '@/components/Footer';
+import Navbar from "@/components/Navbar";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("All");
@@ -69,7 +71,9 @@ export default function Page() {
   ];
 
   return (
-    <main className="bg-[#252525] text-white min-h-screen pb-20 font-sans">
+    <>
+      <main className="bg-[#252525] text-white min-h-screen pb-20 font-sans">
+      <Navbar/>
       <section className="max-w-7xl mx-auto px-4 pt-20 border-b border-white/50 pb-20">
         <div className="w-full overflow-hidden">
           <img
@@ -228,5 +232,7 @@ export default function Page() {
         </div>
       </div>
     </main>
+      <Footer/>
+    </>
   );
 }
