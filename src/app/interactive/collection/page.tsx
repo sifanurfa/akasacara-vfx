@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import OurWorkCard from "@/components/interactive/collection/OurWorkCard";
-import styles from "./Collection.module.css";
 import PopularGame from "@/components/interactive/collection/PopularGame";
 import { InteractiveGameApi } from "@/lib/api";
 import { InteractiveGame } from "@/types/api/types";

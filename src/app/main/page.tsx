@@ -105,9 +105,9 @@ function AkasacaraHome() {
           {showreel && (
             <div className="relative flex flex-col pb-section items-start self-stretch aspect-video overflow-hidden">
               <div className="absolute top-6 left-6 z-10">
-                <img
+                <Image
                   src="/assets/LogoAkasacara.png"
-                  alt="Akasacara Film Logo"
+                  alt="Akasacara Film Logo"                
                   className="w-64 h-15"
                 />
               </div>

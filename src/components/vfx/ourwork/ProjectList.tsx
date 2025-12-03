@@ -2,6 +2,7 @@
 import { OurWorkVFX } from "@/types/api/ourwork";
 import React, { useEffect, useState } from "react";
 import { OurWorkVFXApi } from "@/lib/api";
+import Image from "next/image";
 
 export default function PortofolioList() {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -45,7 +46,7 @@ export default function PortofolioList() {
       {/* Bagian kanan: preview gambar */}
       <div className="w-full max-w-[412px] aspect-[377/530] flex justify-center items-center self-stretch object-cover">
         {hovered !== null && (
-          <img
+          <Image
             src={projects[hovered].image}
             alt={projects[hovered].title}
             width={377}

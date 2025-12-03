@@ -1,6 +1,7 @@
 "use client";
-import { motion, useAnimationFrame } from "framer-motion";
+import { useAnimationFrame } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const images = [
   "https://placehold.co/200x100",
@@ -38,7 +39,7 @@ function InfiniteRow({ direction = 1, speed = 50 }) {
             key={i}
             className="shrink-0 mx-3 flex items-center justify-center"
           >
-            <img
+            <Image
               src={src}
               alt={`Gallery ${i}`}
               className="max-h-[420px] h-auto w-auto rounded-xl object-contain"

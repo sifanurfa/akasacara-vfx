@@ -6,6 +6,7 @@ import PortofolioList from "./PortofolioList";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import PlatformGame from "@/components/interactive/PlatformGame";
 import { ShowreelInteractiveApi } from "@/lib/api";
 
@@ -24,10 +25,10 @@ const Home = () => {
     };
     fetchData();
   }, []);
-  
+
   return (
     <div className="relative bg-interactive overflow-hidden">
-      <Navbar/>
+      <Navbar />
       {/* SHOWREEL */}
       {showreel && (
         <section className="showreel relative w-screen h-screen overflow-hidden">
@@ -42,7 +43,7 @@ const Home = () => {
             Your browser does not support the video tag.
           </video>
           <div className="absolute top-6 left-6 z-10">
-            <img
+            <Image
               src="/assets/LogoInteractive.png"
               alt="Akasacara Film Logo"
               className="w-64 h-15"
@@ -71,9 +72,7 @@ const Home = () => {
       <div className="py-section px-container flex flex-col justify-center items-center overflow-visible">
         {/* TITLE + SEE ALL */}
         <div className="flex justify-between items-end self-stretch">
-          <div className="headline-1 vfx-text-title">
-            LATEST DEVLOG
-          </div>
+          <div className="headline-1 vfx-text-title">LATEST DEVLOG</div>
 
           <div className="px-m py-s outline-[3px] outline-offset-[-3px] outline-white flex justify-center items-center cursor-pointer">
             <Link href="/devlog" className="button-main vfx-text-title">
@@ -100,9 +99,7 @@ const Home = () => {
       {/* ABOUTE US */}
       <div className="py-section px-container flex justify-center items-center">
         <div className="flex-1 grid grid-cols-1 xl:grid-cols-2 items-center gap-xl ">
-          <div className="flex-1 vfx-text-title headline-1">
-            ABOUT US!
-          </div>
+          <div className="flex-1 vfx-text-title headline-1">ABOUT US!</div>
           <div className="flex-1 vfx-text-subtitle-1 sub-heading-reg">
             LodhongKrupuk Interactive, a division of Akasacara Film, is
             dedicated to game development. We strive to push the boundaries of

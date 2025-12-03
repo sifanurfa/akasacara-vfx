@@ -8,6 +8,7 @@ import PortofolioSection from './PortofolioSection';
 import Footer from '@/components/Footer';
 import Navbar from "@/components/Navbar";
 import { ShowreelVFXApi } from "@/lib/api";
+import Image from "next/image";
 
 function VFXHome() {
     const [showreel, setShowreel] = useState<string | null>(null);
@@ -43,7 +44,7 @@ function VFXHome() {
                         </video>
                         <div className={styles.overlay}></div>
                         <div className="absolute top-6 left-6 z-10">
-                            <img 
+                            <Image 
                                 src="/assets/VFXlogo.png" 
                                 alt="VFX Logo" 
                                 className="w-64 h-15"

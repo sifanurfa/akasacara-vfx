@@ -18,11 +18,26 @@ export interface OurWorkMedia {
 
 export interface OurWorkVFX {
   id: number;
+  documentId: string;
   title: string;
   year: string;
   image: string;
-  media?: {
-    url: string;
-    formats?: any;
-  };
+  media?: Media[];
 }
+
+export interface MediaFormat {
+  url: string;
+  width: number;
+  height: number;
+};
+
+export interface Media {
+  id: number;
+  url: string;
+  formats?: {
+    thumbnail?: MediaFormat;
+    small?: MediaFormat;
+    medium?: MediaFormat;
+    large?: MediaFormat;
+  };
+};

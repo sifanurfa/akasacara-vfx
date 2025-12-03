@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
 
 export default function Showcase() {
   const sliderTopRef = useRef<Slider>(null);
@@ -51,7 +52,7 @@ export default function Showcase() {
           {[...items, ...items].map((src, i) => (
             <div key={i} className="px-8">
               <div className="flex items-center justify-center">
-                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <Image src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
               </div>
             </div>
           ))}
@@ -67,7 +68,7 @@ export default function Showcase() {
           {[...items, ...items].reverse().map((src, i) => (
             <div key={i} className="px-8">
               <div className="flex items-center justify-center">
-                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <Image src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
               </div>
             </div>
           ))}

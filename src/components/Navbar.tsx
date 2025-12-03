@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -80,7 +81,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <img src={logoSrc} alt={logoAlt} className="h-14 w-auto object-contain" />
+            <Image src={logoSrc} alt={logoAlt} className="h-14 w-auto object-contain" />
           </div>
 
           {/* Desktop Menu */}
