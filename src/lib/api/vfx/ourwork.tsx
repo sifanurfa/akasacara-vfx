@@ -12,16 +12,12 @@ export const OurWorkVFXApi = {
     const res = await apiClient.get("/vfx-displays?populate=media");
 
     return res.data.data.map((item: OurWorkVFX) => {
-      const media = item.media;
-
       // Ambil yang paling bagus & pasti lowercase
       const rawUrl = item.media?.[0]?.url || "";
 
-      const fullImageUrl = rawUrl
-        ? rawUrl.startsWith("http")
+      const fullImageUrl = rawUrl.startsWith("http")
           ? rawUrl
-          : `${API_URL}${rawUrl}`
-        : "https://placehold.co/600x900/111/fff?text=No+Image";
+          : `${API_URL}${rawUrl}`;
 
       return {
         id: item.id,

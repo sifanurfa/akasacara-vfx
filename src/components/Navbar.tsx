@@ -81,7 +81,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Image src={logoSrc} alt={logoAlt} className="h-14 w-auto object-contain" />
+            <img src={logoSrc} alt={logoAlt} className="h-14 w-auto object-contain" />
           </div>
 
           {/* Desktop Menu */}

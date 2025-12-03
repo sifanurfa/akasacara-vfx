@@ -78,7 +78,7 @@ export default function ShowcaseSection() {
                         </div>
                     ))}                    
                 </div>
-                <Link href="/showcase" className="flex justify-center items-center gap-m self-stretch cursor-pointer">
+                <Link href="/vfx/showcase" className="flex justify-center items-center gap-m self-stretch cursor-pointer">
                     <span className="button-main text-center vfx-text-title">SEE ALL</span>
                     <span className="see-all vfx-text-title">&gt;</span>
                 </Link>

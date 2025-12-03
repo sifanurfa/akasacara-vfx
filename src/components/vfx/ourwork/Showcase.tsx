@@ -52,7 +52,7 @@ export default function Showcase() {
           {[...items, ...items].map((src, i) => (
             <div key={i} className="px-8">
               <div className="flex items-center justify-center">
-                <Image src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
               </div>
             </div>
           ))}
@@ -68,7 +68,7 @@ export default function Showcase() {
           {[...items, ...items].reverse().map((src, i) => (
             <div key={i} className="px-8">
               <div className="flex items-center justify-center">
-                <Image src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
               </div>
             </div>
           ))}

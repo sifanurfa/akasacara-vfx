@@ -31,20 +31,22 @@ function VFXHome() {
             <Navbar/>
             <div className='flex flex-col items-start bg-vfx'>
                 {showreel &&  (
-                    <div className={`flex flex-col py-3xl px-4xl items-start gap-2.5 self-stretch aspect-video`}>
-                        <video
-                            autoPlay
-                            loop
-                            // muted
-                            playsInline
-                            className="absolute top-0 left-0 w-full h-full object-cover"
-                        >
-                            <source src={showreel} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                    <div className={`flex flex-col items-start self-stretch aspect-video`}>
+                        <div className="relative w-full aspect-video">
+                            <video
+                                autoPlay
+                                loop
+                                // muted
+                                playsInline
+                                className="absolute top-0 left-0 w-full object-cover"
+                            >
+                                <source src={showreel} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>                            
+                        </div>
                         <div className={styles.overlay}></div>
                         <div className="absolute top-6 left-6 z-10">
-                            <Image 
+                            <img 
                                 src="/assets/VFXlogo.png" 
                                 alt="VFX Logo" 
                                 className="w-64 h-15"
