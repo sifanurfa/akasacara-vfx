@@ -29,15 +29,16 @@ export default function Showcase() {
   };
 
   const items = [
-    "https://placehold.co/200x100",
-    "https://placehold.co/112x318",
-    "https://placehold.co/150x200",
-    "https://placehold.co/300x250",
-    "https://placehold.co/170x361",
-    "https://placehold.co/212x318",
-    "https://placehold.co/150x200",
-    "https://placehold.co/300x250",
-    "https://placehold.co/170x361",
+    "/assets/vfx/la_1.png",
+    "/assets/vfx/po_1.png",
+    "/assets/vfx/po_2.png",
+    "/assets/vfx/po_3.png",
+    "/assets/vfx/la_4.png",
+    "/assets/vfx/po_4.png",
+    "/assets/vfx/la_5.png",
+    "/assets/vfx/po_5.png",
+    "/assets/vfx/la_6.jpg",
+    "/assets/vfx/po_6.jpg",
   ];
 
   return (
@@ -50,9 +51,9 @@ export default function Showcase() {
       >
         <Slider ref={sliderTopRef} {...settings} rtl={false}>
           {[...items, ...items].map((src, i) => (
-            <div key={i} className="px-8">
+            <div key={i} className="">
               <div className="flex items-center justify-center">
-                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <img src={src} alt="logo" className="max-h-40 max-w-full object-contain" />
               </div>
             </div>
           ))}
@@ -66,9 +67,9 @@ export default function Showcase() {
       >
         <Slider ref={sliderBottomRef} {...settings} rtl={true} speed={14000}>
           {[...items, ...items].reverse().map((src, i) => (
-            <div key={i} className="px-8">
+            <div key={i} className="">
               <div className="flex items-center justify-center">
-                <img src={src} alt="logo" className="max-h-20 max-w-full object-contain" />
+                <img src={src} alt="logo" className="max-h-40 max-w-full object-contain" />
               </div>
             </div>
           ))}
