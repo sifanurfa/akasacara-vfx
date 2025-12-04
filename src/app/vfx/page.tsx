@@ -45,13 +45,6 @@ function VFXHome() {
                             </video>                            
                         </div>
                         <div className={styles.overlay}></div>
-                        <div className="absolute top-6 left-6 z-10">
-                            <img 
-                                src="/assets/VFXlogo.png" 
-                                alt="VFX Logo" 
-                                className="w-64 h-15"
-                            />
-                        </div>
                     </div>                
                 )}
 

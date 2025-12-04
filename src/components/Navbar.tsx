@@ -13,69 +13,32 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
 
   const { menu, logoSrc, logoAlt, currentSection } = useMemo(() => {
-    const normalizedPath = pathname === "/" ? "/main" : pathname;
-
-    if (normalizedPath.startsWith("/vfx")) {
-      return {
-        menu: [
-          { label: "Home", href: "/vfx" },
-          { label: "Showcase", href: "/vfx/showcase" },
-          { label: "Our Work", href: "/vfx/ourwork" },
-        ],
-        logoSrc: "/assets/VFXlogo.png",
-        logoAlt: "LodhongKrupuk VFX Logo",
-        currentSection: "vfx" as const,
-      };
-    }
-
-    if (normalizedPath.startsWith("/interactive")) {
-      return {
-        menu: [
-          { label: "Home", href: "/interactive" },
-          { label: "Newsroom", href: "/interactive/devlog" },
-          { label: "Our Works", href: "/interactive/collection" },
-        ],
-        logoSrc: "/assets/LogoInteractive.png",
-        logoAlt: "LodhongKrupuk Interactive Logo",
-        currentSection: "interactive" as const,
-      };
-    }
-
-    if (normalizedPath.startsWith("/inquiry")) {
-      return {
-        menu: [{ label: "Home", href: "/inquiry" }],
-        logoSrc: "/assets/LogoAkasacaraV2.png",
-        logoAlt: "Akasacara Film Logo",
-        currentSection: "inquiry" as const,
-      };
-    }
-
     return {
       menu: [
-        { label: "Home", href: "/main" },
-        { label: "Newsroom", href: "/main/announcement" },
-        { label: "Our Works", href: "/main/ourworks" },
+        { label: "Home", href: "/vfx" },
+        { label: "Showcase", href: "/vfx/showcase" },
+        { label: "Our Work", href: "/vfx/ourwork" },
       ],
-      logoSrc: "/assets/LogoAkasacaraV2.png",
-      logoAlt: "Akasacara Film Logo",
-      currentSection: "main" as const,
+      logoSrc: "/assets/VFXlogo.png",
+      logoAlt: "LodhongKrupuk VFX Logo",
+      currentSection: "vfx" as const,
     };
-  }, [pathname]);
+  }, []);
 
   const isActive = (href: string) => {
     if (
-      href === "/main" ||
-      href === "/vfx" ||
-      href === "/interactive") {
-      return pathname === href || (href === "/main" && pathname === "/");
+      href === "https://film.akasacara.web.id/" ||
+      href === "https://vfx.akasacara.web.id/" ||
+      href === "https://interactive.akasacara.web.id/") {
+      return pathname === href || (href === "https://film.akasacara.web.id/" && pathname === "/");
     }
     return pathname === href || pathname.startsWith(href + "/");
   };
 
   const sectionLinks = [
-    { name: "Akasacara Film", href: "/main", section: "main" },
-    { name: "LodhongKrupuk VFX", href: "/vfx", section: "vfx" },
-    { name: "LodhongKrupuk Interactive", href: "/interactive", section: "interactive" },
+    { name: "Akasacara Film", href: "https://film.akasacara.web.id/", section: "main" },
+    { name: "LodhongKrupuk VFX", href: "https://vfx.akasacara.web.id/", section: "vfx" },
+    { name: "LodhongKrupuk Interactive", href: "https://interactive.akasacara.web.id/", section: "interactive" },
   ];
 
   useEffect(() => {
